@@ -4,6 +4,7 @@
 *.tfstate.backup
 *.tfvars
 !terraform/environments/*/terraform.tfvars.example
+backend.hcl
 .terraform.lock.hcl
 .DS_Store
 

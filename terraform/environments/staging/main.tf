@@ -1,15 +1,3 @@
-terraform {
-  backend "s3" {
-    # Valores sobrescritos por terraform init -backend-config
-    # O por las variables tfstate_bucket / tfstate_dynamodb_table
-    bucket         = "eks-gitops-tfstate"
-    key            = "staging/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "eks-gitops-tflocks"
-    encrypt        = true
-  }
-}
-
 locals {
   aws_region  = "us-east-1"
   project     = "eks-gitops"
