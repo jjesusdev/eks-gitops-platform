@@ -1,5 +1,7 @@
 # EKS GitOps Platform
 
+[![ci](https://github.com/jjesusdev/eks-gitops-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/jjesusdev/eks-gitops-platform/actions/workflows/ci.yml)
+
 **Stack:** Terraform · AWS EKS · ArgoCD · GitHub Actions · Kustomize · Prometheus + Grafana
 
 Infraestructura como código para provisionar un clúster Kubernetes en AWS EKS, con despliegues declarativos mediante GitOps (ArgoCD), CI/CD automatizado con GitHub Actions (OIDC auth) y monitoreo con Prometheus y Grafana.
