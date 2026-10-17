@@ -1,0 +1,35 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!terraform/environments/*/terraform.tfvars.example
+.terraform.lock.hcl
+.DS_Store
+
+# AWS
+.aws/
+
+# Kubernetes
+.kube/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+
+# Scripts
+*.log
+
+# Secrets
+*.pem
+*.key
+credentials

@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform-validate:
+    name: Terraform fmt + validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
+
+      - name: terraform fmt (check)
+        run: terraform fmt -check -recursive -diff
+
+      - name: terraform init (no backend)
+        run: |
+          for d in terraform/bootstrap terraform/environments/staging terraform/environments/production; do
+            echo "=== $d ==="
+            (cd "$d" && terraform init -backend=false -input=false)
+          done
+
+      - name: terraform validate
+        run: |
+          for d in terraform/bootstrap terraform/environments/staging terraform/environments/production; do
+            echo "=== $d ==="
+            (cd "$d" && terraform validate)
+          done
+
+  k8s-validate:
+    name: Kustomize build (staging + production)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: kustomize build
+        run: |
+          kubectl kustomize k8s/overlays/staging > /dev/null
+          kubectl kustomize k8s/overlays/production > /dev/null
+          echo "overlays OK"

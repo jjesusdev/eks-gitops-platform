@@ -1,0 +1,16 @@
+aws_region             = "us-east-1"
+project                = "eks-gitops"
+environment            = "production"
+vpc_cidr               = "10.0.0.0/16"
+kubernetes_version     = "1.31"
+node_instance_types    = ["t3.xlarge"]
+node_min_size          = 2
+node_desired_size      = 3
+node_max_size          = 6
+public_access_cidrs    = ["10.0.0.0/8"]
+allowed_iam_arns       = ["*"]
+github_org             = "TU_USUARIO_GITHUB"
+github_repo            = "eks-gitops-platform"
+github_branch          = "main"
+tfstate_bucket         = "eks-gitops-tfstate-ACCOUNT_ID"
+tfstate_dynamodb_table = "eks-gitops-tflocks"
