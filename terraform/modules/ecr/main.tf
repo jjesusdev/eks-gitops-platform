@@ -52,10 +52,10 @@ resource "aws_ecr_lifecycle_policy" "repos" {
         rulePriority = 1
         description  = "Expirar imágenes sin tag después de 7 días"
         selection = {
-          tagStatus     = "untagged"
-          countType     = "sinceImagePushed"
-          countUnit     = "days"
-          countNumber   = 7
+          tagStatus   = "untagged"
+          countType   = "sinceImagePushed"
+          countUnit   = "days"
+          countNumber = 7
         }
         action = {
           type = "expire"

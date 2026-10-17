@@ -16,13 +16,13 @@ locals {
 }
 
 module "vpc" {
-  source              = "../../modules/vpc"
-  aws_region          = local.aws_region
-  project             = local.project
-  environment         = local.environment
-  vpc_cidr            = var.vpc_cidr
-  enable_nat_gateway  = true
-  enable_flow_logs    = true
+  source             = "../../modules/vpc"
+  aws_region         = local.aws_region
+  project            = local.project
+  environment        = local.environment
+  vpc_cidr           = var.vpc_cidr
+  enable_nat_gateway = true
+  enable_flow_logs   = true
 }
 
 module "eks" {
@@ -50,15 +50,15 @@ module "ecr" {
 }
 
 module "iam" {
-  source                = "../../modules/iam"
-  aws_region            = local.aws_region
-  project               = local.project
-  environment           = local.environment
-  github_org            = var.github_org
-  github_repo           = var.github_repo
-  github_branch         = var.github_branch
-  eks_cluster_arn       = module.eks.cluster_arn
-  ecr_repository_arns   = module.ecr.ecr_repository_urls
-  s3_bucket_arn         = "arn:aws:s3:::${var.tfstate_bucket}"
-  dynamodb_table_arn    = "arn:aws:dynamodb:${local.aws_region}::table/${var.tfstate_dynamodb_table}"
+  source              = "../../modules/iam"
+  aws_region          = local.aws_region
+  project             = local.project
+  environment         = local.environment
+  github_org          = var.github_org
+  github_repo         = var.github_repo
+  github_branch       = var.github_branch
+  eks_cluster_arn     = module.eks.cluster_arn
+  ecr_repository_arns = module.ecr.ecr_repository_urls
+  s3_bucket_arn       = "arn:aws:s3:::${var.tfstate_bucket}"
+  dynamodb_table_arn  = "arn:aws:dynamodb:${local.aws_region}::table/${var.tfstate_dynamodb_table}"
 }

@@ -25,9 +25,9 @@ resource "aws_s3_bucket" "tf_state" {
   bucket = "eks-gitops-tfstate-${var.project}-${data.aws_caller_identity.current.account_id}-${random_pet.suffix.id}"
 
   tags = {
-    Name        = "eks-gitops-tfstate"
-    Project     = var.project
-    ManagedBy   = "terraform"
+    Name      = "eks-gitops-tfstate"
+    Project   = var.project
+    ManagedBy = "terraform"
   }
 }
 
@@ -68,8 +68,8 @@ resource "aws_dynamodb_table" "tf_locks" {
   }
 
   tags = {
-    Name     = "eks-gitops-tflocks"
-    Project  = var.project
+    Name      = "eks-gitops-tflocks"
+    Project   = var.project
     ManagedBy = "terraform"
   }
 }
